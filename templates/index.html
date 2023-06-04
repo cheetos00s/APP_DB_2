@@ -1,12 +1,24 @@
 {% extends './base.html' %}
-
-{% block title %} XDDDD {% endblock %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% block title %} Home {% endblock %}
 
 
 {% block body %}
-<div class="row">
+
+<div class="text-center container">
     <div class="col-md-6 offset-md-3">
         <h1>Bienvenido!!!!</h1> 
+    </div>
+</div>
+        <div class="drag-area">
+            <h2>Arrastra y suelta tu archivo</h2>
+            <span>O</span>
+            <button>Selecciona tu archivo</button>
+            <input type="file" name="" id="input-file" hidden multiple>
+        </div>
+        <div id="preview"></div>
+
+        <script src="./static/js/index.js"></script>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
