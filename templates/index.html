@@ -5,7 +5,7 @@
 
 {% block body %}
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6 offset-md-3">
         <h1>pene!!!!</h1> 
         <div class="table-responsive">
             <table class="table table-striped">
@@ -18,7 +18,7 @@
                 <tbody>
                     {% for leng in informacion %}
                     <tr>
-                        <td>l</td>
+                        <td>{{loop.index}}</td>
                         <td>{{leng}}</td>
                     </tr>
                     {% endfor %}
