@@ -9,16 +9,12 @@
     <div class="col-md-6 offset-md-3">
         <h1>Bienvenido!!!!</h1> 
     </div>
-</div>
-        <div class="drag-area">
-            <h2>Arrastra y suelta tu archivo</h2>
-            <span>O</span>
-            <button>Selecciona tu archivo</button>
-            <input type="file" name="" id="input-file" hidden multiple>
-        </div>
-        <div id="preview"></div>
-
-        <script src="./static/js/index.js"></script>
+</div>  
+        <h1>Upload your CSV file</h1>
+        <form method="POST" action="" enctype="multipart/form-data">
+        <p><input type="file" name="file"></p>
+        <p><input type="submit" value="Submit"></p>
+        </form>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>

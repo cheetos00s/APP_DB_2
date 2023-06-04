@@ -52,14 +52,6 @@ function processFile(file){
     if(validExtensions.includes(docType)){
         //archivo valido
         console.log("se cargo el archivo");
-        const fileReader = new FileReader();
-        const id = `file-${Math.random().toString(32).substring(7)}`;
-
-        fileReader.addEventListener('load', e => {
-            console.log("se cargo el archivo");
-        });
-
-        
     }else{
         //no es valido
         alert('No es un archivo valido');
