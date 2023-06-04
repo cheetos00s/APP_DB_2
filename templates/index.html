@@ -1,0 +1,30 @@
+{% extends './base.html' %}
+
+{% block title %} XDDDD {% endblock %}
+
+
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+        <h1>pene!!!!</h1> 
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for leng in informacion %}
+                    <tr>
+                        <td>l</td>
+                        <td>{{leng}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 
+{% endblock %}
