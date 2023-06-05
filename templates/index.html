@@ -7,14 +7,17 @@
 
 <div class="text-center container">
     <div class="col-md-6 offset-md-3">
-        <h1>Bienvenido!!!!</h1> 
+        <h1>Bienvenido</h1> 
     </div>
-</div>  
+</div> 
+
+    <div>               
         <h1>Upload your CSV file</h1>
-        <form method="POST" action="" enctype="multipart/form-data">
-        <p><input type="file" name="file"></p>
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+        <p><input type="file" name="csvfile"></p>
         <p><input type="submit" value="Submit"></p>
         </form>
+    </div>    
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
