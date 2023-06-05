@@ -2,11 +2,30 @@ from flask import Flask, render_template, request, redirect, url_for
 import os
 from os.path import join, dirname, realpath
 import pandas as pd
+import mysql.connector
 
 info = ("xddd", "huevo", "hambre", "zanahoria", "gato")
-csvData = [];
+csvData = ();
 
 app = Flask(__name__)
+
+#sql connection
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="toor",
+  database="salida"
+)
+
+# sql test connection
+
+mycursor = mydb.cursor()
+
+mycursor.execute("SHOW DATABASES")
+
+# List All Databases
+for x in mycursor:
+  print(x)
 
 # Upload folder
 UPLOAD_FOLDER = 'static/files'
@@ -14,7 +33,7 @@ app.config['UPLOAD_FOLDER'] =  UPLOAD_FOLDER
 
 @app.route("/")
 def home():
-    return render_template('pruebaIndex.html')
+    return render_template('index.html', informacion=csvData)
 
 # Get the uploaded files
 @app.route("/", methods=['POST'])
@@ -41,9 +60,11 @@ def parseCSV(filePath):
       csvData = pd.read_csv(filePath,names=col_names, header=None)
       # Loop through the Rows
       for i,row in csvData.iterrows():
-             print(i,row['first_name'],row['last_name'],row['address'],row['street'],row['state'],row['zip'],)
-
-
+             sql = "INSERT INTO addresses (first_name, last_name, address, street, state, zip) VALUES (%s, %s, %s, %s, %s, %s)"
+             value = (row['first_name'],row['last_name'],row['address'],row['street'],row['state'],str(row['zip']))
+             mycursor.execute(sql, value, if_exists='append')
+             mydb.commit()
+             print(i,row['first_name'],row['last_name'],row['address'],row['street'],row['state'],row['zip'])
 
 if __name__ == '__main__':
     app.run(debug=True)
