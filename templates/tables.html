@@ -1,10 +1,12 @@
 {% extends './base.html' %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tablas.css') }}">
 
-{% block title %} Home {% endblock %}
+{% block title %}  Tables {% endblock %}
+
 {% block body %}
-<h1>Se ejecuto</h1>
-    <table>
+
+
+    <table id="TR">
         <thead>
             <tr>
                 <th>ID_MASCOTA</th>
@@ -13,14 +15,213 @@
             </tr>
         </thead>
         <tbody>
-        {% for row in data %}  
+    {% for row in datatr %} 
         <tr>
-            <td>{{ID_MASCOTA[0]}}</td>
-            <td>{{ID_TRATAMIENTO[1]}}</td>
-            <td>{{FECHA_TRATAMIENTO[2]}}</td>
+            <td>{{ row['ID_MASCOTA'] }}</td>
+            <td>{{ row['ID_TRATAMIENTO'] }}</td>
+            <td>{{ row['FECHA_TRATAMIENTO'] }}</td>
         </tr> 
-        {% endfor %} 
+    {% endfor %}
+        </tbody>
+    </table>
+
+    <table id="dataTratamiento">
+        <thead>
+            <tr>
+                <th>ID_TRATAMIENTO</th>
+                <th>TIPO_TRATAMIENTO</th>
+                <th>DESCRIPCION_TRATAMIENTO</th>
+            </tr>
+        </thead>
+        <tbody>
+{% for row in dataTratamiento %} 
+        <tr>
+            <td>{{ row['ID_TRATAMIENTO'] }}</td>
+            <td>{{ row['TIPO_TRATAMIENTO'] }}</td>
+            <td>{{ row['DESCRIPCION_TRATAMIENTO'] }}</td>
+        </tr> 
+{% endfor %}
+        </tbody>
+    </table>
+
+
+    <table  id="dataDonacion">
+        <thead>
+            <tr>
+                <th>ID_DONACION</th>
+                <th>TIPO_DONACION</th>
+                <th>DESCRIPCION_DONACION</th>
+                <th>ID_DONANTE</th>
+            </tr>
+        </thead>
+        <tbody>
+{% for row in dataDonacion %} 
+        <tr>
+            <td>{{ row['ID_DONACION'] }}</td>
+            <td>{{ row['TIPO_DONACION'] }}</td>
+            <td>{{ row['DESCRIPCION_DONACION'] }}</td>
+            <td>{{ row['ID_DONANTE'] }}</td>
+        </tr> 
+{% endfor %}
+        </tbody>
+    </table>
+
+
+    <table id="dataRefugio">
+        <thead>
+            <tr>
+                <th>ID_REFUGIO</th>
+                <th>NOMBRE_REFUGIO</th>
+                <th>DIRECCION_REFUGIO</th>
+                <th>HORARIO_REFUGIO</th>
+                <th>MAIL_REFUGIO</th>
+                <th>TELEFONO_REFUGIO</th>
+                <th>ID_SEDE</th>
+                <th>ID_DONACION</th>
+            </tr>
+        </thead>
+        <tbody>
+{% for row in dataRefugio %} 
+        <tr>
+            <td>{{ row['ID_REFUGIO'] }}</td>
+            <td>{{ row['NOMBRE_REFUGIO'] }}</td>
+            <td>{{ row['DIRECCION_REFUGIO'] }}</td>
+            <td>{{ row['HORARIO_REFUGIO'] }}</td>
+            <td>{{ row['MAIL_REFUGIO'] }}</td>
+            <td>{{ row['TELEFONO_REFUGIO'] }}</td>
+            <td>{{ row['ID_SEDE'] }}</td>
+            <td>{{ row['ID_DONACION'] }}</td>
+        </tr> 
+{% endfor %}
+        </tbody>
+    </table>
+
+
+    <table id="dataSede">
+        <thead>
+            <tr>
+                <th>ID_SEDE</th>
+                <th>NOMBRE_SEDE</th>
+                <th>DIRECCION_SEDE</th>
+            </tr>
+        </thead>
+        <tbody>
+{% for row in dataSede %} 
+        <tr>
+            <td>{{ row['ID_SEDE'] }}</td>
+            <td>{{ row['NOMBRE_SEDE'] }}</td>
+            <td>{{ row['DIRECCION_SEDE'] }}</td>
+        </tr> 
+{% endfor %}
+        </tbody>
+    </table>
+
+    <table id="dataDonante">
+        <thead>
+            <tr>
+                <th>ID_DONANTE</th>
+                <th>NOMBRE_DONANTE</th>
+                <th>EDAD_DONANTE</th>
+                <th>TELEFONO_DONANTE</th>
+                <th>MAIL_DONANTE</th>
+            </tr>
+        </thead>
+        <tbody>
+{% for row in dataDonante %} 
+        <tr>
+            <td>{{ row['ID_DONANTE'] }}</td>
+            <td>{{ row['NOMBRE_DONANTE'] }}</td>
+            <td>{{ row['EDAD_DONANTE'] }}</td>
+            <td>{{ row['TELEFONO_DONANTE'] }}</td>
+            <td>{{ row['MAIL_DONANTE'] }}</td>
+        </tr> 
+{% endfor %}
+        </tbody>
+    </table>
+
+    <table id="dataPersona">
+        <thead>
+            <tr>
+                <th>ID_PERSONA</th>
+                <th>NOMBRE_PERSONA</th>
+                <th>EDAD_PERSONA</th>
+                <th>EMPLEO_PERSONA</th>
+                <th>SALARIO_PERSONA</th>
+                <th>DIRECCION_PERSONA</th>
+                <th>ID_MASCOTA</th>
+            </tr>
+        </thead>
+        <tbody>
+{% for row in dataPersona %} 
+        <tr>
+            <td>{{ row['ID_PERSONA'] }}</td>
+            <td>{{ row['NOMBRE_PERSONA'] }}</td>
+            <td>{{ row['EDAD_PERSONA'] }}</td>
+            <td>{{ row['EMPLEO_PERSONA'] }}</td>
+            <td>{{ row['SALARIO_PERSONA'] }}</td>
+            <td>{{ row['DIRECCION_PERSONA'] }}</td>
+            <td>{{ row['CIUDAD_PERSONA'] }}</td>
+            <td>{{ row['ID_MASCOTA'] }}</td>
+        </tr> 
+{% endfor %}
+        </tbody>
+    </table>
+
+    <table id="dataMacota">
+        <thead>
+            <tr>
+                <th>ID_MASCOTA</th>
+                <th>NOMBRE_MASCOTA</th>
+                <th>EDAD_MASCOTA</th>
+                <th>RAZA_MASCOTA</th>
+                <th>FECHA_INGRESO</th>
+                <th>ESTADO_MASCOTA</th>
+                <th>GENERO_MASCOTA</th>
+                <th>ESPECIE_MASCOTA</th>
+                <th>ID_REFUGIO</th>
+                <th>ID_SITIO</th>
+            </tr>
+        </thead>
+        <tbody>
+{% for row in dataMascota %} 
+        <tr>
+            <td>{{ row['ID_MASCOTA'] }}</td>
+            <td>{{ row['NOMBRE_MASCOTA'] }}</td>
+            <td>{{ row['EDAD_MASCOTA'] }}</td>
+            <td>{{ row['RAZA_MASCOTA'] }}</td>
+            <td>{{ row['FECHA_INGRESO'] }}</td>
+            <td>{{ row['ESTADO_MASCOTA'] }}</td>
+            <td>{{ row['GENERO_MASCOTA'] }}</td>
+            <td>{{ row['ESPECIE_MASCOTA'] }}</td>
+            <td>{{ row['ID_REFUGIO'] }}</td>
+            <td>{{ row['ID_SITIO'] }}</td>
+        </tr> 
+{% endfor %}
+        </tbody>
+    </table>
+
+    <table id="dataSitio">
+        <thead>
+            <tr>
+                <th>ID_SITIO</th>
+                <th>NOMBRE_RESCATE</th>
+                <th>DIRRECCION_RESCATE</th>
+            </tr>
+        </thead>
+        <tbody>
+{% for row in dataSitio %} 
+        <tr>
+            <td>{{ row['ID_SITIO'] }}</td>
+            <td>{{ row['NOMBRE_RESCATE'] }}</td>
+            <td>{{ row['DIRRECCION_RESCATE'] }}</td>
+        </tr> 
+{% endfor %}
         </tbody>
     </table>
 
 {% endblock %}
+
+
+    
+
+
