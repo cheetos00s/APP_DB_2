@@ -1,41 +1,44 @@
 {% extends './base.html' %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
 {% block title %} Home {% endblock %}
 
 
 {% block body %}
-
-<div class="text-center container">
-    <div class="col-md-6 offset-md-3">
-        <h1>Bienvenido</h1> 
-    </div>
-</div> 
-
-    <div>               
+<div class = "custom-container">
+    <div class="upload-text">
+        <h1>Welcome</h1>
         <h1>Upload your CSV file</h1>
-        <form method="POST" action="/upload" enctype="multipart/form-data">
-        <p><input type="file" name="csvfile"></p>
-        <p><input type="submit" value="Submit"></p>
-        </form>
-    </div>    
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nombre</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for leng in informacion %}
-                    <tr>
-                        <td>{{loop.index}}</td>
-                        <td>{{leng}}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+
     </div>
-</div> 
+    <div>
+        <p>
+            <input type="file" name="csvfile" id="file" class="file-input" accept="">
+                <label for="file" class="custom-button" id="file-label">Choose File</label>
+        </p>
+
+        <p><input type="submit" value="Submit" class="custom-button"></p>
+    </form>
+    <form method="POST" action="/insertar_datos" enctype="multipart/form-data">
+
+   
+        <p><input type="submit" value="Show Tables"class="custom-button"></p>
+    </form>
+    </div>
+</div>
+
+<script>
+    const fileInput = document.getElementById("file");
+    const fileLabel = document.getElementById("file-label");
+
+    fileInput.addEventListener("change", function() {
+        if (fileInput.files.length > 0) {
+            fileLabel.textContent = fileInput.files[0].name;
+        } else {
+            fileLabel.textContent = "Choose File";
+        }
+    });
+</script>
 {% endblock %}
+

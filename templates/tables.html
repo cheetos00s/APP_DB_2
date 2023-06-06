@@ -1,0 +1,26 @@
+{% extends './base.html' %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+{% block title %} Home {% endblock %}
+{% block body %}
+<h1>Se ejecuto</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID_MASCOTA</th>
+                <th>ID_TRATAMIENTO</th>
+                <th>FECHA_TRATAMIENTO</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in data %}  
+        <tr>
+            <td>{{ID_MASCOTA[0]}}</td>
+            <td>{{ID_TRATAMIENTO[1]}}</td>
+            <td>{{FECHA_TRATAMIENTO[2]}}</td>
+        </tr> 
+        {% endfor %} 
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,6 @@
+{% block content %}
+    <script src="{{ url_for('static', filename='js/error.js') }}"></script>
+    <script>
+        showError('{{ error_message|tojson }}');
+    </script>
+{% endblock %}

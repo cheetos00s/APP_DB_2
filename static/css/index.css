@@ -76,3 +76,44 @@ body{
 .failture{
     color: #ff0000;
 }
+
+.file-input {
+    display: none;
+}
+
+.custom-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color:  #24242c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.custom-button:hover {
+    background-color: #494747;
+}
+.button-container {
+    display: flex;
+    flex-direction: column;
+}
+.upload-text {
+    text-align: center;
+    background-color: #24242c;
+    padding: 20px;
+    color: white;
+    
+}
+
+.custom-container {
+    border: 1px solid  #24242c ;
+    padding: 0px;  
+  
+}
