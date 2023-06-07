@@ -28,6 +28,21 @@
     </div>
 </div>
 
+<h1>Calcular Media</h1>
+    <form action="/calcular_media" method="post">
+        <label for="tabla">Tabla:</label>
+        <input type="text" id="tabla" name="tabla">
+        <label for="columna">Columna:</label>
+        <input type="text" id="columna" name="columna">
+        <button type="submit">Calcular</button>
+    </form>
+
+    <div id="resultado">
+        {% if media %}
+            Media: {{ media }}
+        {% endif %}
+    </div>
+
 <script>
     const fileInput = document.getElementById("file");
     const fileLabel = document.getElementById("file-label");

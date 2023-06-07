@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, jsonify, render_template, request, redirect, url_for
 import os
 from os.path import join, dirname, realpath
 import pandas as pd
@@ -230,6 +230,23 @@ def tables():
     print(result_tratamiento)
     return render_template('tables.html', datatr = result_tr, dataTratamiento = result_tratamiento, dataDonacion = result_donacion, dataSede = result_sede, dataRefugio = result_refugio, dataDonante = result_donante, dataMascota = result_mascota, dataPersona = result_persona, dataSitio = result_sitio_rescate)
 
+@app.route('/calcular_media', methods=['GET', 'POST'])
+def calcular_media():
+    if request.method == 'POST':
+        try:
+            tabla = request.form['tabla']
+            columna = request.form['columna']
+            mycursor.callproc('CalcularMedia', [tabla, columna, 0])
+            mycursor.execute('SELECT @media')
+            media = mycursor.fetchone()[0] 
+            print(media)
+            print(tabla)
+            print(columna)
+            return render_template('index.html', media=media)
+        except Exception as e:
+            return jsonify({'error': str(e)})
+    else:
+        return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
